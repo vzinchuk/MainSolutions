@@ -1,0 +1,65 @@
+﻿
+
+-------------------------------------------------------------------------------------------------------
+select tp.Name, cls.ID, cls.Name, cls.DisplayName as ClsDisplayName,attr.Name as AttrName,  attr.DisplayName as AttrDisplayName, attr.PrimaryKey,  cls.ClassType 
+from SchemaObjectType  as tp
+join SchemaObjectTypeToClass rel on rel.RelatedSchemaObjectType = tp.ID
+join SchemaObjectClass cls on cls.ID = rel.RelatedSchemaObjectClass
+join SchemaObjectAttribute attr on attr.BelongsToSchemaObjectClass = cls.ID
+--where tp.Name = 'SVMEmailSignatureType' 
+--and cls.ClassType = 3
+Order By tp.Name, cls.ID asc, attr.PrimaryKey desc
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+							select distinct olatr.Name as LeftName,oratr.Name as RightName from SchemaObjectRelation as rel
+							join SchemaObjectAttribute latr on rel.LeftAttribute = latr.ID
+							join SchemaObjectAttribute ratr on rel.RightAttribute = ratr.ID
+							join SchemaObjectClass olatr on latr.BelongsToSchemaObjectClass = olatr.ID
+							join SchemaObjectClass oratr on ratr.BelongsToSchemaObjectClass = oratr.ID
+							where olatr.Name <>oratr.Name
+
+-------------------------------------------------------------------------------------------------------
+
+declare @typeId uniqueidentifier, @typeName varchar(250)
+
+							declare typeTables cursor for 
+							select top 10 ID, Name from SchemaObjectType where IsSchemaObject = 0
+							open typeTables
+							fetch next from typeTables into @typeId, @typeName
+							while(@@FETCH_STATUS = 0)
+							begin
+														
+								select tp.Name as TypeName, cls.ID as ClassID, cls.Name as ClassName, cls.DisplayName as ClassDisplayName,attr.Name as AttributeName,  attr.DisplayName as AttributeDisplayName, attr.PrimaryKey,  cls.ClassType 
+								from SchemaObjectType  as tp
+								join SchemaObjectTypeToClass rel on rel.RelatedSchemaObjectType = tp.ID
+								join SchemaObjectClass cls on cls.ID = rel.RelatedSchemaObjectClass
+								join SchemaObjectAttribute attr on attr.BelongsToSchemaObjectClass = cls.ID
+								where tp.ID = @typeId
+								--and cls.ClassType = 3
+								Order By tp.Name, cls.ID asc, attr.PrimaryKey desc
+								fetch next from typeTables into @typeId, @typeName
+							end
+
+							close typeTables
+							deallocate typeTables
+
+-------------------------------------------------------------------------------------------------------
+
+								;with relations 
+							as
+							(
+							select rel.RelatedSchemaObjectClass as ID, cls.Name as ClassName, otp.Name as TypeName, atr.Name as AttributeName, atr.ID as AttributeID from SchemaObjectType as otp
+							join SchemaObjectTypeToClass rel on rel.RelatedSchemaObjectType = otp.ID
+							join SchemaObjectClass cls on cls.ID = rel.RelatedSchemaObjectClass
+							join SchemaObjectAttribute atr on atr.BelongsToSchemaObjectClass = cls.ID
+							where otp.ID in ('46C86C68-42AE-4089-8398-6E4140FE8658', 'F44C91CF-6EBD-4C44-8E55-98FDF89A87BC', '6FDE3427-EC80-4436-8553-11ECBDB0AB43', 'CCAC642A-5CB9-4728-87DB-1A604889CA64')
+							and atr.IsSchemaObject > 0 
+							)
+
+							select distinct atr1.TypeName, atr2.TypeName from SchemaObjectRelation as rel
+							join relations atr1 on rel.RightAttribute =atr1.AttributeID 
+							join relations atr2 on rel.LeftAttribute = atr2.AttributeID
+							where atr1.TypeName <> atr2.TypeName

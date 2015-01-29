@@ -1,0 +1,7 @@
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\bin\SilverlightTestApplication.Web.dll
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\bin\SilverlightTestApplication.Web.pdb
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\obj\Debug\SilverlightTestApplication.Web.csprojResolveAssemblyReference.cache
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\obj\Debug\SilverlightTestApplication.Web.dll
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\obj\Debug\SilverlightTestApplication.Web.pdb
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\bin\WcfServiceLibrary.dll
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\SilverlightTestApplication.Web\bin\WcfServiceLibrary.pdb

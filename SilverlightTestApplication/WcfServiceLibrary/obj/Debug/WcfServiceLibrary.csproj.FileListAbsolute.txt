@@ -1,0 +1,5 @@
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.dll.config
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.dll
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.pdb
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\WcfServiceLibrary\obj\Debug\WcfServiceLibrary.dll
+C:\Users\vzinchuk\Desktop\ProjectSimple\SilverlightTestApplication\WcfServiceLibrary\obj\Debug\WcfServiceLibrary.pdb
